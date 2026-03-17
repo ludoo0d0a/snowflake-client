@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: "off"
+
+snowflake:
+  # Example values - replace with your real account details
+  url: "jdbc:snowflake://<account>.snowflakecomputing.com/?db=DATA_CLOUD&schema=PUBLIC"
+  user: "<YOUR_USER>"
+  role: "<YOUR_ROLE>"
+  warehouse: "<YOUR_WAREHOUSE>"
+
+  # Private key authentication.
+  # The private key itself lives in a PKCS#8 .p8 file on disk; we keep
+  # the file path and its passphrase in configuration.
+  private-key-path: "/path/to/your/rsa_key.p8"
+  private-key-passphrase: "changeit"
+
