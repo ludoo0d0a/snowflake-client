@@ -1,8 +1,10 @@
 package com.example.snowflakeclient.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
@@ -10,13 +12,10 @@ import java.sql.Driver;
 import java.util.Properties;
 
 @Configuration
+@RequiredArgsConstructor
 public class SnowflakeConfig {
 
     private final SnowflakeProperties properties;
-
-    public SnowflakeConfig(SnowflakeProperties properties) {
-        this.properties = properties;
-    }
 
     @Bean
     public DataSource snowflakeDataSource() throws Exception {
@@ -46,8 +45,13 @@ public class SnowflakeConfig {
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate(DataSource snowflakeDataSource) {
+    public JdbcTemplate snowflakeJdbcTemplate(DataSource snowflakeDataSource) {
         return new JdbcTemplate(snowflakeDataSource);
+    }
+
+    @Bean
+    public DataSourceTransactionManager snowflakeTransactionManager(DataSource snowflakeDataSource) {
+        return new DataSourceTransactionManager(snowflakeDataSource);
     }
 }
 
