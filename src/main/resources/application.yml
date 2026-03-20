@@ -5,6 +5,17 @@ spring:
     exclude:
       - org.springframework.boot.autoconfigure.data.jdbc.JdbcRepositoriesAutoConfiguration
       - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+  datasource:
+    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL"
+    username: "sa"
+    password: ""
+    driver-class-name: "org.h2.Driver"
+  jpa:
+    hibernate:
+      ddl-auto: "create-drop"
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.H2Dialect"
 
 snowflake:
   # Example values - replace with your real account details
@@ -18,14 +29,4 @@ snowflake:
   # the file path and its passphrase in configuration.
   private-key-path: "/path/to/your/rsa_key.p8"
   private-key-passphrase: "changeit"
-
-h2:
-  datasource:
-    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL"
-    username: "sa"
-    password: ""
-    driver-class-name: "org.h2.Driver"
-  jpa:
-    hbm2ddl-auto: "create-drop"
-    dialect: "org.hibernate.dialect.H2Dialect"
 

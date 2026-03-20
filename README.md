@@ -24,7 +24,7 @@ Edit `src/main/resources/application.yml`:
 - `snowflake.private-key-passphrase`
 
 ### H2 (JPA)
-In `application.yml`, configure `h2.datasource.*` and `h2.jpa.*` if you want to override defaults.
+In `application.yml`, configure `spring.datasource.*` and `spring.jpa.*` if you want to override defaults.
 
 ## Run tests
 
